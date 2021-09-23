@@ -1,3 +1,5 @@
+// This file belongs to https://github.com/mrdoob/three.js
+
 ( function () {
 
 	const _object_pattern = /^[og]\s*(.+)?/; // mtllib file_reference

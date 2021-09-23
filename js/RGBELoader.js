@@ -1,3 +1,5 @@
+// This file belongs to https://github.com/mrdoob/three.js
+
 ( function () {
 
 	// http://en.wikipedia.org/wiki/RGBE_image_format
