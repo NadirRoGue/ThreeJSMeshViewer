@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mesh viewer</title>
+    <link rel="stylesheet" href="./style/renderer.css" type="text/css">
+    <script src="./js/three.min.js"></script>
+    <script src="./js/OBJLoader.js"></script>
+    <script src="./js/RGBELoader.js"></script>
+    <script src="./js/page_control.js"></script>
+  </head>
+
+  <body onload="initialize()">
+    <div id="canvas_div">
+    </div>
+    <div id="controls">
+        <div class="input_holder" id="load_mesh_div">
+            <table>
+            <tr><td colspan="2" style="text-align:center; padding-bottom:3%;"><b><u>Load/Render settings</u></b></td><td>&nbsp;</td></tr>
+            <tr><td colspan="2" style="text-align:center;"><label for="mesh_path">Mesh file</label></td><td>&nbsp;</td></tr>
+            <tr><td colspan="2"><input type="file" id="mesh_path" onchange="readMeshFile()"></td><td>&nbsp;</td></tr>
+            <tr><td colspan="2" style="text-align:center;"><label>Display control</label></td><td>&nbsp;</td></tr>
+            <tr>
+            <td><input type="button" value="Restart rendering" onclick="restartRender()"></td>
+            <td><input type="button" value="Stop rendering" onclick="stopRender()"></td>
+            </tr>
+            </table>
+        </div>
+        <div class="input_holder">
+            <table>
+            <tr><td colspan="2" style="text-align:center; padding-bottom:3%;"><b><u>Scene settings</u></b></td><td>&nbsp;</td></tr>
+            <tr><td colspan="2" style="text-align:center;"><label for="env_path">Enviromental map</label></td><td>&nbsp;</td></tr>
+            <tr><td colspan="2"><input type="file" id="env_path" onchange="updateEnvMap()"></td><td>&nbsp;</td></tr>
+            </table>
+        </div>
+        <div class="input_holder" id="graphics_settings">
+            <table>
+            <tr><td colspan="2" style="text-align:center; padding-bottom:3%;"><b><u>Principled BRDF</u></b></td><td>&nbsp;</td></tr>
+            <tr>
+            <td><label for="albedo">Base color</label></td>
+            <td><input type="color" id="albedo" name="albedo" value="#ff0000" oninput="updateAlbedo()"></td>
+            </tr>
+            <tr>
+            <td><label for="metallic">Metallic</label></td>
+            <td><input type="range" id="metallic" name="metallic" steps="100" value="1" min="1" max="100" oninput="updateMetalness()"></td>
+            </tr>
+            <tr>
+            <td><label for="roughness">Roughness</label></td>
+            <td><input type="range" id="roughness" name="roughness" steps="100" value="1" min="1" max="100" oninput="updateRoughness()"></td>
+            </tr>
+            <tr>
+            <td><label for="sheentint">SheenTint</label></td>
+            <td><input type="color" id="sheentint" name="sheentint" value="#000000" oninput="updateSheenTint()"></tr>
+            </tr>
+            <tr>
+            <td><label for="clearcoat">Clearcoat</label></td>
+            <td><input type="range" id="clearcoat" name="clearcoat" steps="100" value="1" min="1" max="100" oninput="updateClearcoat()"></td>
+            </tr>
+            <tr>
+            <td><label for="clearcoat_roughness">Clearcoat Roughness</label></td>
+            <td><input type="range" id="clearcoat_roughness" name="clearcoat_roughness" steps="100" value="1" min="1" max="100" oninput="updateClearcoatRoughness()"></td>
+            </tr>
+            <tr>
+            <td><label for="ior">Index of Refraction</label></td>
+            <td><input type="range" id="ior" name="ior" steps="133" value="100" min="100" max="233" oninput="updateIOR()"></td>
+            </tr>
+            <tr>
+            <td><label for="transmission">Transmission</label></td>
+            <td><input type="range" id="transmission" name="transmission" steps="100" value="1" min="1" max="100" oninput="updateTransmission()"></td>
+            </tr>
+            <tr>
+            <td><label for="emission">Emission</label></td>
+            <td><input type="color" id="emission" name="emission" value="#000000" oninput="updateEmission()"></td>
+            </tr>
+            <td><label for="reflectivity">Reflectivity</label></td>
+            <td><input type="range" id="reflectivity" name="reflectivity" steps="100" value="50" min="1" max="100" oninput="updateReflectivity()"></td>
+            </tr>
+            </table>
+        </div>
+    </div>
+  </body>
+</html>
